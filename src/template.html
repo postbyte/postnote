@@ -26,9 +26,15 @@
 	     because `src/client.js` references it -->
 	<div id='sapper'>%sapper.html%</div>
 
+	<form name="contact" netlify netlify-honeypot="bot-field" hidden>
+		<input type="email" name="email" />
+		<textarea name="message"></textarea>
+	</form>
+
 	<!-- Sapper creates a <script> tag containing `src/client.js`
 	     and anything else it needs to hydrate the app and
 	     initialise the router -->
 	%sapper.scripts%
+	
 </body>
 </html>

@@ -6,12 +6,13 @@ import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
-
+import json from '@rollup/plugin-json'
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
 const onwarn = (warning, onwarn) => (warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) || onwarn(warning);
+const dedupe = importee => importee === 'svelte' || importee.startsWith('svelte/');
 
 export default {
 	client: {
@@ -29,7 +30,7 @@ export default {
 			}),
 			resolve({
 				browser: true,
-				dedupe: ['svelte']
+				dedupe
 			}),
 			commonjs(),
 
@@ -62,6 +63,7 @@ export default {
 		input: config.server.input(),
 		output: config.server.output(),
 		plugins: [
+			json(),
 			replace({
 				'process.browser': false,
 				'process.env.NODE_ENV': JSON.stringify(mode)
@@ -71,7 +73,7 @@ export default {
 				dev
 			}),
 			resolve({
-				dedupe: ['svelte']
+				dedupe
 			}),
 			commonjs()
 		],
