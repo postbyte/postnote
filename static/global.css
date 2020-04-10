@@ -5,3 +5,8 @@
 	--body-bg-color: var(--gray-0);
   }
   
+#editor-container {
+	font-size: inherit;
+	font-family: inherit;
+	background-color: #fff;
+}

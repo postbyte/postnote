@@ -19,13 +19,13 @@
             ["image", "code-block"]
           ]
         },
-        placeholder: "Compose an epic...",
+        placeholder: "",
         theme: "snow" // or 'bubble'
       });
     }
   });
   const saveChanges = async function() {
-    let response = await fetch(`/blog/${post.slug}`, {
+    let response = await fetch(`/feed/${post.slug}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -40,7 +40,7 @@
     alert(jsonResult.state);
   };
   const createPost = async function() {
-    let response = await fetch(`/blog/${post.slug}`, {
+    let response = await fetch(`/feed/${post.slug}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -65,7 +65,7 @@
   <title>{post.title}</title>
 </svelte:head>
 {#if isEditMode || isCreateMode}
-  Title:
+  <label>Title:</label>
   <input type="text" bind:value={post.title} />
 {:else}
   <h1>{post.title}</h1>

@@ -16,9 +16,8 @@
 </script>
 
 <script>
-  import BlogView from "./_form.svelte";
+  import PostView from "./_form.svelte";
   export let post;
 </script>
 
-<h1>Edit</h1>
-<BlogView {post} isEditMode={true} />
+<PostView {post} />

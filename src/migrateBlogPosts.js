@@ -1,6 +1,6 @@
 import admin from "firebase-admin";
-import serviceAccount from "./../../sapper-blog-8c057-firebase-adminsdk-pvurz-fe407a0246.json"
-import posts from './blog/_posts'
+import serviceAccount from "./../../postnote-9a13a-firebase-adminsdk-k4z7p-186ca0fa48.json"
+import posts from './feed/_posts'
 
 export async function get(req, res, next) {
 
