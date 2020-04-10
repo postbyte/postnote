@@ -8,7 +8,7 @@ admin.initializeApp({
 export async function put(req, res, next) {
   const { slug } = req.params;
   let { title, content, password } = req.body
-  if (password === "bla_bla_bla") {
+  if (password === "") {
     let db = admin.database()
     let ref = db.ref().child(slug)
     await ref.update({ html: content, title: title })
@@ -22,7 +22,7 @@ export async function put(req, res, next) {
 export async function post(req, res, next) {
   const { slug } = req.params;
   let { title, content, password } = req.body
-  if (password === "bla_bla_bla") {
+  if (password === "") {
     let db = admin.database()
     let ref = db.ref().child(slug)
     await ref.set({ html: content, title: title, slug: slug })
